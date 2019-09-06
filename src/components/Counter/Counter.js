@@ -5,17 +5,26 @@ import './Counter.scss';
 //import { counterReducer } from '../../redux/counter/counter-reducer';
 
 const Counter = ({ counter, inc, dec, rnd }) => {
+  const styleRed = {
+    color: 'red'
+  };
+  const styleBlue = {
+    color: 'blue'
+  };
+  const style = counter > 0 ? styleBlue : styleRed;
   return (
     <div className='counter'>
-      <h2 className='title'>{counter}</h2>
+      <h2 className='title' style={style}>
+        {counter}
+      </h2>
       <div className='buttons'>
-        <button className='button' onClick={inc}>
+        <button id='inc' className='button' onClick={inc}>
           PLUS
         </button>
-        <button className='button' onClick={dec}>
+        <button id='dec' className='button' onClick={dec}>
           MINUS
         </button>
-        <button className='button' onClick={rnd}>
+        <button id='rnd' className='button' onClick={rnd}>
           RUNDOM
         </button>
       </div>

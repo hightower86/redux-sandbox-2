@@ -7,11 +7,11 @@ export const counterReducer = (state = initialState, action) => {
   console.log(state);
   switch (action.type) {
     case 'INC':
-      return (newState.counter += 1);
+      return { ...newState, counter: (newState.counter += 1) };
     case 'DEC':
-      return (newState.counter -= 1);
+      return { ...newState, counter: (newState.counter -= 1) };
     case 'RND':
-      return newState.counter + action.payload;
+      return { ...newState, counter: newState.counter + action.payload };
     default:
       return state;
   }
