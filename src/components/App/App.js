@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className='app'>
       <h1>Application Counter</h1>
-      <Counter />
+      {/* <Counter /> */}
     </div>
   );
 };
