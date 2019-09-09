@@ -1,0 +1,18 @@
+.counter {
+  .title {
+    color: rgb(59, 44, 124);
+    font-size: 30px;
+  }
+  .buttons {
+    //display: flex;
+    .button {
+      margin: 5px;
+      height: 30px;
+      width: 100px;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}
