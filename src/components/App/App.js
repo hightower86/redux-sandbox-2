@@ -7,11 +7,12 @@ import './App.scss';
 const App = () => {
   return (
     <div className='app'>
-      <Header />
       <Router>
+        <Header />
         <Route path='/' exact render={() => <h2>Home</h2>} />
         <Route path='/counter' component={Counter} />
-        <Route path='/calculator' component={Counter} />
+        <Route path='/calculator' render={() => <h2>Calculator</h2>} />
+        <Route path='/game' render={() => <h2>game</h2>} />
       </Router>
       {/* <h2>App Component</h2> */}
     </div>
