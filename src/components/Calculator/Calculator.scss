@@ -1,39 +1,53 @@
 .calculator {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  //align-items: stretch;
+  height: 300px;
   .box {
+    background-color: rgb(218, 216, 240);
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-
-    margin: auto;
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 50%;
     border: 1px solid #000;
     border-radius: 5px;
     .display {
-      //align-self: center;
-      height: 50px;
-      width: 90%;
+      //padding-top: 0.1rem;
+      height: 20%;
+      width: 95%;
       border: 1px solid #000;
       border-radius: 5px;
-      margin-top: 10px;
-      background-color: #999;
+      background-color: rgb(206, 206, 206);
+      font-size: 4rem;
+      font-family: 'DS-Digital Bold';
     }
     .keyboard {
-      //align-self: center;
+      height: 70%;
+      width: 95%;
       display: flex;
       align-items: center;
       justify-content: space-around;
       border: 1px solid #000;
       border-radius: 5px;
-      height: 70%;
-      width: 90%;
       .digits {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
         width: 75%;
         height: 95%;
-        border: 1px solid #000;
+        border: 1px solid rgb(172, 196, 233);
         border-radius: 5px;
+        .btn {
+          //height: 30%;
+          //width: 50%;
+          border: 1px solid #000;
+          border-radius: 3px;
+          &:hover {
+            background-color: #888;
+          }
+        }
       }
       .actions {
         width: 18%;
@@ -43,4 +57,13 @@
       }
     }
   }
+}
+@font-face {
+  font-family: 'DS-Digital Bold';
+  src: url('DS-Digital-Bold.eot');
+  src: url('DS-Digital-Bold.eot?#iefix') format('embedded-opentype'),
+    url('DS-Digital-Bold.woff') format('woff'),
+    url('DS-Digital-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
