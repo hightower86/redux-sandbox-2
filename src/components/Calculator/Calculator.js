@@ -25,7 +25,8 @@ const Calculator = () => {
     <div className='calculator'>
       {/* <h2>Calculator</h2> */}
       <div className='box'>
-        <div className='display'>456789.0</div>
+        {/* <div className='display'>456789.0</div> */}
+        <Display />
         <div className='keyboard'>
           <div className='digits'>{buttons}</div>
           <div className='actions'>
@@ -37,6 +38,14 @@ const Calculator = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Display = () => {
+  return (
+    //<div>
+    <div className='display'>456789.0</div>
+    //</div>
   );
 };
 
