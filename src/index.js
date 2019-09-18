@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './components/App';
@@ -20,7 +20,23 @@ const reducer = (state = { counter: 0 }, action) => {
       return state;
   }
 };
-const store = createStore(reducer);
+
+const calcReducer = (state = { sum: 0 }, action) => {
+  switch (action.type) {
+    case 'SUM':
+      return { ...state, sum: 1 };
+
+    default:
+      return state;
+  }
+};
+
+const rootReducer = combineReducers({
+  reducer,
+  calcReducer
+});
+const store = createStore(rootReducer);
+console.log(store.getState());
 
 ReactDom.render(
   <Provider store={store}>

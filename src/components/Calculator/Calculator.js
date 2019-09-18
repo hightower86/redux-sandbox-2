@@ -41,10 +41,10 @@ const Calculator = () => {
   );
 };
 
-const Display = () => {
+const Display = ({ sum = 0 }) => {
   return (
     //<div>
-    <div className='display'>456789.0</div>
+    <div className='display'>{sum}</div>
     //</div>
   );
 };
