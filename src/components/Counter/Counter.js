@@ -24,7 +24,7 @@ const Counter = ({ counter, inc, dec, rnd }) => {
 };
 
 const mapStateToProps = state => ({
-  counter: state.reducer.counter
+  counter: state.counterReducer.counter
 });
 
 const mapDispatchToProps = dispatch => ({

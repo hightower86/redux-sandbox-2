@@ -1,21 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import Display from '../Display';
 import './Calculator.scss';
-import CalcButton from '../CalcButton';
+//import CalcButton from '../CalcButton';
 
-const addBtn = () => {
-  const btn = document.createElement('button');
-  btn.classList.add('btn');
+// const addBtn = () => {
+//   const btn = document.createElement('button');
+//   btn.classList.add('btn');
+// };
+
+const btns = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '+-', '0', 'del'];
+const onBtnClick = btn => {
+  console.log('click', btn);
 };
-
-const btns = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '+-', '0', ','];
-
-const Calculator = () => {
-  const onBtnClick = btn => {
-    console.log('click', btn);
-  };
+const Calculator = ({ sum, press, del }) => {
   const buttons = btns.map(btn => {
     return (
-      <button className='btn' onClick={() => onBtnClick(btn)}>
+      <button key={btn} className='btn' onClick={() => press(btn)}>
         {btn}
       </button>
     );
@@ -41,12 +43,16 @@ const Calculator = () => {
   );
 };
 
-const Display = ({ sum = 0 }) => {
-  return (
-    //<div>
-    <div className='display'>{sum}</div>
-    //</div>
-  );
-};
+const mapStateToProps = state => ({
+  sum: state.calcReducer.sum
+});
 
-export default Calculator;
+const mapDispatchToProps = dispatch => ({
+  press: num => dispatch({ type: 'SUM', payload: num }),
+  del: () => dispatch({ type: 'DEL' })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Calculator);

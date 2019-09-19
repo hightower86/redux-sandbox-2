@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import './index.scss';
 
-const reducer = (state = { counter: 0 }, action) => {
+const counterReducer = (state = { counter: 0 }, action) => {
   switch (action.type) {
     case 'INC':
       return { ...state, counter: (state.counter += 1) };
@@ -24,7 +24,13 @@ const reducer = (state = { counter: 0 }, action) => {
 const calcReducer = (state = { sum: 0 }, action) => {
   switch (action.type) {
     case 'SUM':
-      return { ...state, sum: 1 };
+      return {
+        ...state,
+        sum: (state.sum =
+          state.sum === 0 ? action.payload : state.sum + action.payload)
+      };
+    case 'DEL':
+      return { ...state, sum: state.sum.slice(0, state.sum.length - 1) };
 
     default:
       return state;
@@ -32,11 +38,11 @@ const calcReducer = (state = { sum: 0 }, action) => {
 };
 
 const rootReducer = combineReducers({
-  reducer,
+  counterReducer,
   calcReducer
 });
 const store = createStore(rootReducer);
-console.log(store.getState());
+//console.log(store.getState());
 
 ReactDom.render(
   <Provider store={store}>
