@@ -20,17 +20,26 @@ const counterReducer = (state = { counter: 0 }, action) => {
       return state;
   }
 };
+const showDisplay = (sum, str) => {
+  console.log(sum, str);
+  if (typeof +str === 'number') {
+    return sum + str;
+  } else if (str == 'del') {
+    console.log('del');
+    return sum.slice(0, sum.length - 1);
+  }
+};
 
 const calcReducer = (state = { sum: 0 }, action) => {
   switch (action.type) {
     case 'SUM':
       return {
         ...state,
-        sum: (state.sum =
-          state.sum === 0 ? action.payload : state.sum + action.payload)
+        sum: (state.sum = showDisplay(state.sum, action.payload))
+        //state.sum === 0 ? action.payload : state.sum + action.payload)
       };
-    case 'DEL':
-      return { ...state, sum: state.sum.slice(0, state.sum.length - 1) };
+    // case 'DEL':
+    //   return { ...state, sum: state.sum.slice(0, state.sum.length - 1) };
 
     default:
       return state;
